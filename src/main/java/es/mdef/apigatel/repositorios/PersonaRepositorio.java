@@ -10,14 +10,19 @@ import es.mdef.apigatel.entidades.PersonaConId;
 
 public interface PersonaRepositorio extends JpaRepository<PersonaConId, Long> {
 	
-	@RepositoryRestResource(path = "login", collectionResourceRel = "usuarios")
-	public interface UsuarioRepositorio extends JpaRepository<PersonaConId, Long> {
-
-//	    Optional<PersonaConId> findByNombreUsuarioAndPassword(String nombreUsuario, String password);
-//	    Optional<PersonaConId> findByTip(String tip);
-	}
-
-	Optional<PersonaConId> findByNombreUsuarioAndPassword(String nombreUsuario, String password);
+//	@RepositoryRestResource(path = "login", collectionResourceRel = "usuarios")
+//	public interface UsuarioRepositorio extends JpaRepository<PersonaConId, Long> {
+//
+////	    Optional<PersonaConId> findByNombreUsuarioAndPassword(String nombreUsuario, String password);
+////	    Optional<PersonaConId> findByTip(String tip);
+//	}
+//	
+//	
+//
+//	Optional<PersonaConId> findByNombreUsuarioAndPassword(String nombreUsuario, String password);
+//	
+	
+	Optional<PersonaConId> findByNombreUsuario(String username);
 	
 	@Query(value = "SELECT * FROM public.personas WHERE tip = :tip", nativeQuery = true)
 	PersonaConId buscaPorTip(String tip);

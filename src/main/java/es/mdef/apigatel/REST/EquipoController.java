@@ -3,6 +3,7 @@ package es.mdef.apigatel.REST;
 import java.time.LocalDate;
 import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,6 +53,7 @@ public class EquipoController {
 	@GetMapping("{id}")
 	public EquipoModel one(@PathVariable Long id) {
 		EquipoConId Equipo = repositorio.findById(id).orElseThrow(() -> new RegisterNotFoundException(id, "Equipo"));
+//		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		return assembler.toModel(Equipo);
 	}
 
