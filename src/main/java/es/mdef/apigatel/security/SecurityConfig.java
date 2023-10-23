@@ -23,6 +23,7 @@ public class SecurityConfig {
 			.and()
 			.addFilter(new JwtAuthenticationFilter(authenticationManager))
 			.addFilter(new JwtAuthorizationFilter(authenticationManager))
+			.cors()
 			;
 		return http.build();
 	}
