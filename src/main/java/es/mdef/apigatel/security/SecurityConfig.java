@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.switchuser.SwitchUserFilter;
 
 @Configuration
 public class SecurityConfig {
@@ -24,6 +25,7 @@ public class SecurityConfig {
 			.and()
 			.addFilter(new JwtAuthenticationFilter(authenticationManager))
 			.addFilter(new JwtAuthorizationFilter(authenticationManager))
+			.addFilterAfter(new AddResponseHeaderFilter(), SwitchUserFilter.class)
 			.cors()
 			;
 		return http.build();
